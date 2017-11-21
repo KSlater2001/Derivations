@@ -1,5 +1,6 @@
 package executables;
 import java.util.ArrayList;
+import derive.deriveFunction;
 public class polynomials {
 public static String splitPoly(ArrayList<String> terms){
 		//pre-condition: input ArrayList is a polynomial separated into terms
@@ -7,8 +8,11 @@ public static String splitPoly(ArrayList<String> terms){
 	
 		//splitting polynomial into its parts
 		ArrayList<Character> sign = new ArrayList<Character>();
+		
+		//currently changed
 		ArrayList<Double> coefficient = new ArrayList<Double>();
-		ArrayList<Double> exponent = new ArrayList<Double>();
+
+		ArrayList<String> exponent = new ArrayList<String>();
 		for(String i : terms){		
 			//establishing the sign of the term
 			if(i.equals("+")) sign.add('+');
@@ -20,10 +24,23 @@ public static String splitPoly(ArrayList<String> terms){
 				else coefficient.add(Double.valueOf(i.substring(0,i.indexOf('x'))));
 			}
 			//establishing exponent of the term
-			if(i.contains("^")) exponent.add(Double.valueOf(i.substring(i.indexOf('^') + 1, i.length())));
-			else if(i.length() > 1 && !i.contains("^")) exponent.add(1.0);
+			if(i.contains("^")) exponent.add(i.substring(i.indexOf('^') + 1, i.length()));
+			else if(i.length() > 1 && !i.contains("^")) exponent.add(String.valueOf(1.0));
 		}
-		String derivative = derivePoly(sign, coefficient, exponent);
+		
+		//checking for variable in exponent to use chain rule
+		String tempDerivative = "";
+		for(String i : exponent) {
+			if(i.contains("x")) {
+				String[] tempExpFunc = i.split("\\s");
+				tempDerivative += deriveFunction.funcType(tempExpFunc);
+			}
+		}
+		
+		//finishing declaring the final exponents to build derived function
+		ArrayList<Double> finalExponent = new ArrayList<Double>();
+		for
+		String derivative = derivePoly(sign, coefficient, finalExponent);
 		return derivative;
 }
 	public static String derivePoly(ArrayList<Character> sign, ArrayList<Double> coefficient, ArrayList<Double> exponent){ 

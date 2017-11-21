@@ -5,14 +5,19 @@ import java.util.Scanner;
 import executables.polynomials;
 public class deriveFunction {
 	public static void main(String[] args){
+		
+		//inputting function for derivation
 		Scanner functionIn = new Scanner(System.in);
 		System.out.println("What function would to like to be derived? ");
 		String function = functionIn.nextLine();
 		String[] terms = function.split("\\s|y|=");
-		funcType(terms);
+		
+		//getting finished derivative
+		String derivative = funcType(terms);
 		functionIn.close();
+		System.out.println(derivative);
 	}
-	public static void funcType(String[] function){
+	public static String funcType(String[] function){
 		
 		//splitting String into its separate terms
 		ArrayList<String> terms = new ArrayList<String>(Arrays.asList(function));
@@ -31,7 +36,7 @@ public class deriveFunction {
 			}
 		}
 		String derivative = polynomials.splitPoly(terms);
-		System.out.println(derivative);
+		return derivative;
 	}
 }
 
