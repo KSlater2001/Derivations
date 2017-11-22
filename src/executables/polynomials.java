@@ -24,7 +24,10 @@ public static String splitPoly(ArrayList<String> terms){
 				else coefficient.add(Double.valueOf(i.substring(0,i.indexOf('x'))));
 			}
 			//establishing exponent of the term
-			if(i.contains("^")) exponent.add(i.substring(i.indexOf('^') + 1, i.length()));
+			if(i.contains("^")) {
+				if(i.contains("(")) exponent.add(i.substring(i.indexOf('(') + 1, i.indexOf(')') - 1));
+				else exponent.add(i.substring(i.indexOf('^') + 1, i.length()));
+			}
 			else if(i.length() > 1 && !i.contains("^")) exponent.add(String.valueOf(1.0));
 		}
 		
@@ -36,10 +39,9 @@ public static String splitPoly(ArrayList<String> terms){
 				tempDerivative += deriveFunction.funcType(tempExpFunc);
 			}
 		}
-		
+				
 		//finishing declaring the final exponents to build derived function
 		ArrayList<Double> finalExponent = new ArrayList<Double>();
-		for
 		String derivative = derivePoly(sign, coefficient, finalExponent);
 		return derivative;
 }
@@ -64,4 +66,4 @@ public static String splitPoly(ArrayList<String> terms){
 	}
 }
 
-//Sample function: y = -5.347x^70 + 347x^2 - .34x + 674
+//Sample function: y = -5.347x^70 + 347x^(2x^2 + 4) - .34x + 674

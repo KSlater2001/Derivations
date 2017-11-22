@@ -10,7 +10,7 @@ public class deriveFunction {
 		Scanner functionIn = new Scanner(System.in);
 		System.out.println("What function would to like to be derived? ");
 		String function = functionIn.nextLine();
-		String[] terms = function.split("\\s|y|=");
+		String[] terms = function.split("\\s(?![^()]*+\\))|y|=");
 		
 		//getting finished derivative
 		String derivative = funcType(terms);
@@ -22,6 +22,10 @@ public class deriveFunction {
 		//splitting String into its separate terms
 		ArrayList<String> terms = new ArrayList<String>(Arrays.asList(function));
 		terms.removeAll(Arrays.asList(null, ""));
+		terms.remove("");
+		
+		for(String i : terms) System.out.println(i);
+
 		if(terms.get(0).charAt(0) != '-') terms.add(0, "+");
 		else{
 			String var = terms.get(0).substring(1, terms.get(0).length());
