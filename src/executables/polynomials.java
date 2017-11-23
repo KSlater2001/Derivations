@@ -49,7 +49,7 @@ public static String splitPoly(ArrayList<String> terms){
 		}
 				
 		//finishing declaring the final exponents to build derived function
-		ArrayList<Double> finalExponent = new ArrayList<Double>();
+		//ArrayList<Double> finalExponent = new ArrayList<Double>();
 		String derivative = derivePoly(sign, coefficient, exponent);
 		return derivative;
 }
