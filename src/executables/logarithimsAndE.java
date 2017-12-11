@@ -23,6 +23,9 @@ public class logarithimsAndE {
 	}
 	public static String deriveNaturalLog(String lnTerm){
 		//derives natural log terms
+		String denominator = lnTerm.substring(lnTerm.indexOf('(') + 1, lnTerm.lastIndexOf(')');
+		String numerator = DeriveRelation.funcType(denominator);
+		
 	}
 	public static String deriveCommonLog(String logTerm){
 		//derives common log terms
