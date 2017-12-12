@@ -53,6 +53,7 @@ public class DeriveRelation {
 						terms.remove(i - 1);
 			}
 		}
+		for(String i: terms) System.out.println(i);
 		
 		String derivative = polynomials.splitPoly(terms);
 		return derivative;
