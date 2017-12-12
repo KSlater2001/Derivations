@@ -1,6 +1,5 @@
 package executables;
 import java.util.ArrayList;
-import derive.DeriveRelation;
 public class polynomials {
 public static String splitPoly(ArrayList<String> terms){
 		//pre-condition: input ArrayList is a polynomial separated into terms
@@ -61,7 +60,7 @@ public static String splitPoly(ArrayList<String> terms){
 			derivative += " " + sign.get(i) + " " + derCoE; 
 			double derExponent = Double.valueOf(exponent.get(i)) - 1;
 			if(derExponent == 1) derivative += "x ";
-			else if(derExponent != 0) derivative += "x^" + derExponent;
+			else if(derExponent != 0) derivative += "x^(" + derExponent + ")";
 			else derivative += " ";
 		}
 		

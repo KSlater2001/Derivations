@@ -1,6 +1,6 @@
 package executables;
 import java.util.ArrayList;
-public class logarithimsAndE {
+public class DeriveE {
 	public String deriveNaturalLog(String lnTerm){
 		//derives natural log terms
 		String denominator = lnTerm.substring(lnTerm.indexOf('(') + 1, lnTerm.lastIndexOf(')');
